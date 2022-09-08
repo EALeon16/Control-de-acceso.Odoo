@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+<data>
+  <record id ="view_tree_ca" model="ir.ui.view">
+  <field name="name">view.tree.ca</field>
+  <field name="model">controlacceso.carrera</field>
+  <field name="arch" type="xml">
+    <tree>
+      <field name="name"/>
+    </tree>
+  </field>
+  </record>
+
+  <record id="action_view_ca" model="ir.actions.act_window">
+  <field name="name">Control de acceso</field>
+  <field name="res_model">controlacceso.carrera</field>
+  <field name="view_mode">tree,form</field>
+  </record>
+
+<!--Accion de ventana Curso-->
+<record id ="view_tree_curso" model="ir.ui.view">
+  <field name="name">view.tree.curso</field>
+  <field name="model">controlacceso.curso</field>
+  <field name="arch" type="xml">
+    <tree>
+      <field name="name"/>
+      <field name="carrera"/>
+    </tree>
+  </field>
+  </record>
+
+  <record id="view_form_curso" model="ir.ui.view">
+            <field name="name">view.form.curso</field>
+            <field name="model">controlacceso.curso</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="carrera_id"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+</record>
+ <record id="action_view_curso" model="ir.actions.act_window">
+  <field name="name">Curso</field>
+  <field name="res_model">controlacceso.curso</field>
+  <field name="view_mode">tree,form</field>
+  </record>
+<!--Fin Accion de ventana Curso-->
+
+
+<!--Accion de ventana Materia-->
+<record id ="view_tree_materia" model="ir.ui.view">
+  <field name="name">view.tree.materia</field>
+  <field name="model">controlacceso.materia</field>
+  <field name="arch" type="xml">
+    <tree>
+      <field name="name"/>
+      <field name="carrera_id"/>
+    </tree>
+  </field>
+  </record>
+
+  <record id="view_form_materia" model="ir.ui.view">
+            <field name="name">view.form.materia</field>
+            <field name="model">controlacceso.materia</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="carrera_id"/>
+                            </group>
+                    </sheet>
+
+                </form>
+            </field>
+</record>
+ <record id="action_view_materia" model="ir.actions.act_window">
+  <field name="name">Materias</field>
+  <field name="res_model">controlacceso.materia</field>
+  <field name="view_mode">tree,form</field>
+  </record>
+<!--Fin Accion de ventana Materia-->
+
+<!--Accion de ventana Docente-->
+<record id ="view_tree_docente" model="ir.ui.view">
+  <field name="name">view.tree.docente</field>
+  <field name="model">controlacceso.docente</field>
+  <field name="arch" type="xml">
+    <tree>
+      <field name="cedula"/>
+      <field name="nombre_docente"/>
+      <field name="apellido_docente"/>
+      <field name="correo_docente"/>
+      <field name="estado"/>
+      <field name="id_tarjeta"/>
+      <field name="carrera_id"/>
+    </tree>
+  </field>
+  </record>
+
+  <record id="view_form_docente" model="ir.ui.view">
+            <field name="name">view.form.docente</field>
+            <field name="model">controlacceso.docente</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="cedula"/>
+                            </group>
+                            <group>
+                                <field name="nombre_docente"/>
+                            </group>
+                            <group>
+                                <field name="apellido_docente"/>
+                            </group>
+                            <group>
+                                <field name="correo_docente"/>
+                            </group>
+                            <group>
+                                <field name="estado"/>
+                            </group>
+                            <group>
+                                <field name="id_tarjeta"/>
+                            </group>
+                            <group>
+                                <field name="carrera_id"/>
+                            </group>
+                            
+                    </sheet>
+
+                </form>
+            </field>
+</record>
+ <record id="action_view_docente" model="ir.actions.act_window">
+  <field name="name">Docentes</field>
+  <field name="res_model">controlacceso.docente</field>
+  <field name="view_mode">tree,form</field>
+  </record>
+<!--Fin Accion de ventana Docente-->
+
+<!--Accion de ventana Estudiante-->
+<record id ="view_tree_estudiante" model="ir.ui.view">
+  <field name="name">view.tree.estudiante</field>
+  <field name="model">controlacceso.estudiante</field>
+  <field name="arch" type="xml">
+    <tree>
+      
+      <field name="nombre_estudiante"/>
+      <field name="apellido_estudiante"/>
+      <field name="estado"/>
+      <field name="id_tarjeta"/>
+      <field name="curso_id"/>
+    </tree>
+  </field>
+  </record>
+
+  <record id="view_form_estudiante" model="ir.ui.view">
+            <field name="name">view.form.estudiante</field>
+            <field name="model">controlacceso.estudiante</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            
+                            <group>
+                                <field name="nombre_estudiante"/>
+                            </group>
+                            <group>
+                                <field name="apellido_estudiante"/>
+                            </group>
+                            <group>
+                                <field name="estado"/>
+                            </group>
+                            <group>
+                                <field name="id_tarjeta"/>
+                            </group>
+                            <group>
+                                <field name="curso_id"/>
+                            </group>
+                            
+                    </sheet>
+
+                </form>
+            </field>
+</record>
+ <record id="action_view_estudiante" model="ir.actions.act_window">
+  <field name="name">Estudiantes</field>
+  <field name="res_model">controlacceso.estudiante</field>
+  <field name="view_mode">tree,form</field>
+  </record>
+<!--Fin Accion de ventana Estudiante-->
+
+
+<!--Accion de ventana Lab-->
+<record id ="view_tree_lab" model="ir.ui.view">
+  <field name="name">view.tree.lab</field>
+  <field name="model">controlacceso.lab</field>
+  <field name="arch" type="xml">
+    <tree>
+      <field name="codigo_lab"/>
+      <field name="name"/>
+      <field name="estado_puerta"/>
+      <field name="clave_llave"/>
+    </tree>
+  </field>
+  </record>
+
+  <record id="view_form_lab" model="ir.ui.view">
+            <field name="name">view.form.lab</field>
+            <field name="model">controlacceso.lab</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            <group>
+                                <field name="codigo_lab"/>
+                            </group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="estado_puerta"/>
+                            </group>
+                            <group>
+                                <field name="clave_llave"/>
+                            </group>
+                            
+                            
+                    </sheet>
+
+                </form>
+            </field>
+</record>
+ <record id="action_view_lab" model="ir.actions.act_window">
+  <field name="name">Laboratorios</field>
+  <field name="res_model">controlacceso.lab</field>
+  <field name="view_mode">tree,form</field>
+  </record>
+<!--Fin Accion de ventana Lab-->
+
+<!--Accion de ventana horario
+<record id ="view_tree_horario" model="ir.ui.view">
+  <field name="name">view.tree.horario</field>
+  <field name="model">controlacceso.horario</field>
+  <field name="arch" type="xml">
+    <tree>
+      
+    </tree>
+  </field>
+  </record>
+
+  <record id="view_form_horario" model="ir.ui.view">
+            <field name="name">view.form.horario</field>
+            <field name="model">controlacceso.horario</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                           
+                            
+                    </sheet>
+
+                </form>
+            </field>
+</record>
+ <record id="action_view_horario" model="ir.actions.act_window">
+  <field name="name">Horario</field>
+  <field name="res_model">controlacceso.horario</field>
+  <field name="view_mode">tree,form</field>
+  </record>-->
+<!--Fin Accion de ventana horario-->
+  <menuitem id="menu_ac"   parent="" action="control_acceso.action_view_ca"/>
+  <menuitem id="menu_curso"   parent="control_acceso.menu_ac" action="control_acceso.action_view_curso"/>
+  <menuitem id="menu_materia"   parent="control_acceso.menu_ac" action="control_acceso.action_view_materia"/>
+  <menuitem id="menu_docente" parent="control_acceso.menu_ac" action="control_acceso.action_view_docente"/>
+  <menuitem id="menu_estudiante" parent="control_acceso.menu_ac" action="control_acceso.action_view_estudiante"/>
+  <menuitem id="menu_lab" parent="control_acceso.menu_ac" action="control_acceso.action_view_lab"/>
+
+</data>
+</odoo>
