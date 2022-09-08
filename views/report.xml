@@ -1,0 +1,83 @@
+<odoo>
+<data>
+<record id="registroasistencia_reporte" model="ir.actions.report">
+<field name="name">Reporte Asistencias Laboratorios</field>
+<field name="model">controlacceso.registroasistencia</field>
+<field name="report_type">qweb-pdf</field>
+<field name="report_name">control_acceso.report_registroasistencia</field>
+<field name="report_file">control_acceso.report_registroasistencia</field>
+<field name="binding_model_id" ref="control_acceso.model_controlacceso_registroasistencia"></field>
+<field name="binding_type">report</field>
+</record>
+
+<template id="report_registroasistencia">
+
+<t t-call="web.html_container">
+
+<t t-call="web.external_layout">
+<center>
+<h1>Reporte de Asistencias</h1>
+</center>
+<p class="text-right">Loja, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d de %B del %Y')"/></p>
+<div clas="page">
+ <div style="font-family: 'Open Sans', sans-serif; font-size: 16pt;
+                                color: #000000">
+<table class="table table-striped" id="tablets">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Hora ingreso</th>
+                <th>Fecha ingreso</th>
+                <th>Temperatura</th>
+                <th>Nro. tarjeta</th>
+                <th>Lab</th>
+                <th>Ingreso al laboratorio?</th>
+
+
+
+
+            </tr>
+            </thead>
+             
+                <tr t-foreach="docs" t-as="data">
+
+                    <th><t t-esc="data.name"/></th>
+                    <th><t t-esc="data.hora_ingreso"/></th>
+                    <th><t t-esc="data.fecha_ingreso"/></th>
+                    <th><t t-esc="data.temperatura"/></th>
+                    <th><t t-esc="data.tarjeta"/></th>
+                    <th><t t-esc="data.lab_id.name"/></th>
+                    <th><t t-esc="data.ingreso_usuario"/></th>
+
+                           
+   
+                    
+                </tr>
+            
+    
+            
+    
+        </table>
+</div>
+</div>
+</t>
+</t>
+</template>
+
+<record id="paperformat_frenchcheck" model="report.paperformat">
+    <field name="name">French Bank Check</field>
+    <field name="default" eval="True"/>
+    <field name="format">custom</field>
+    <field name="page_height">80</field>
+    <field name="page_width">175</field>
+    <field name="orientation">Portrait</field>
+    <field name="margin_top">3</field>
+    <field name="margin_bottom">3</field>
+    <field name="margin_left">3</field>
+    <field name="margin_right">3</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">3</field>
+    <field name="dpi">80</field>
+</record>
+</data>
+</odoo>

@@ -2,21 +2,158 @@
 
 <odoo>
 <data>
-  <record id ="view_tree_ca" model="ir.ui.view">
-  <field name="name">view.tree.ca</field>
-  <field name="model">controlacceso.carrera</field>
+<!--Venta principal y horario-->
+<record id="horario_view_kanban" model="ir.ui.view">
+<field name="name">project.project.kanban</field>
+<field name="model">controlacceso.lab</field>
+<field name="arch" type="xml">
+<kanban class="o_kanban_mobile">
+<templates>
+<t t-name="kanban-box">
+<div t-attf-class="oe_kanban_content oe_kanban_global_click o_kanban_get_form">
+<div class="row">
+<div class="col-12">
+<strong>
+<field name="name" string="Jurasico"/>
+</strong>
+</div>
+</div>
+</div>
+</t>
+</templates>
+</kanban>
+</field>
+</record>
+<!--  <record id="view_form_horario" model="ir.ui.view">
+            <field name="name">view.form.horario</field>
+            <field name="model">controlacceso.horario</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                            
+                            <group>
+                                <notebook string="Horario">
+                                <page string="Lunes">
+                                </page>
+                                <page string="Martes">
+                                </page>
+                                <page string="Miércoles">
+                                </page>
+                                <page string="Jueves">
+                                </page>
+                                <page string="Viernes">
+                                </page>
+                                </notebook>
+                            </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+ -->
+<record id="action_view_horario" model="ir.actions.act_window">
+<field name="name">Horarios</field>
+<field name="res_model">controlacceso.horario</field>
+<field name="view_mode">kanban,form</field>
+</record>
+<!--Fin venta principal y horario-->
+
+<!--Venta principal y horario 2-->
+<record id ="view_tree_horario2" model="ir.ui.view">
+  <field name="name">view.tree.horario2</field>
+  <field name="model">controlacceso.horario2</field>
   <field name="arch" type="xml">
     <tree>
-      <field name="name"/>
+      <field name="id"/>
+      <field name="lunes"/>
+      <field name="martes"/>
+      <field name="miercoles"/>
+      <field name="jueves"/>
+      <field name="viernes"/>
+      <field name="hora_inicio" />
+      <field name="hora_fin"/>
+      <field name="laboratorio_id"/>
+      <field name="carrera_id"/>
+      
+      <field name="curso_id"/>
+      <field name="docente_id"/>
     </tree>
   </field>
   </record>
 
-  <record id="action_view_ca" model="ir.actions.act_window">
-  <field name="name">Control de acceso</field>
-  <field name="res_model">controlacceso.carrera</field>
+  <record id="view_form_horario2" model="ir.ui.view">
+            <field name="name">view.form.horario2</field>
+            <field name="model">controlacceso.horario2</field>
+            <field name="arch" type="xml">
+                <form>
+                    
+            <sheet>
+                            
+                            
+                            <group>
+                                <field  name="hora_inicio"/>
+                            </group>
+                            <group>
+                                <field name="hora_fin"/>
+                            </group>
+                            
+                            <group>
+                                <field name="laboratorio_id"/>
+                            </group>
+                            <group>
+                                <field name="carrera_id"/>
+                            </group>
+                            
+                            <group>
+                                <field name="curso_id" domain="[('carrera_id', '=', carrera_id)]"/>
+                            </group>
+                            <group>
+                                <field name="docente_id"/>
+                            </group>
+                            <group>
+                                <notebook string="Horario">
+                                <page string="lunes">
+                                <group>
+                                <field name="lunes" domain="[('carrera_id', '=', carrera_id)]"/>
+                                </group>
+                                </page>
+                                <page string="martes">
+                                <group>
+                                <field name="martes" domain="[('carrera_id', '=', carrera_id)]"/>
+                                </group>
+                                </page>
+                                <page string="miercoles">
+                                <group>
+                                <field name="miercoles" domain="[('carrera_id', '=', carrera_id)]"/>
+                                </group>
+                                </page>
+                                <page string="jueves">
+                                <group>
+                                <field name="jueves" domain="[('carrera_id', '=', carrera_id)]"/>
+                                </group>
+                                </page>
+                                <page string="viernes">
+                                <group>
+                                <field name="viernes" domain="[('carrera_id', '=', carrera_id)]"/>
+                                </group>
+                                </page>
+                                </notebook>
+                            </group>
+                    </sheet>
+ 
+                </form>
+                
+            </field>
+</record>
+
+ <record id="action_view_horario2" model="ir.actions.act_window">
+  <field name="name">Horarios 2</field>
+  <field name="res_model">controlacceso.horario2</field>
   <field name="view_mode">tree,form</field>
   </record>
+<!--Fin venta principal y horario 2-->
+
+
+
 
 <!--Accion de ventana Curso-->
 <record id ="view_tree_curso" model="ir.ui.view">
@@ -97,11 +234,10 @@
   <field name="model">controlacceso.docente</field>
   <field name="arch" type="xml">
     <tree>
+      <field name="id"/>
       <field name="cedula"/>
-      <field name="nombre_docente"/>
-      <field name="apellido_docente"/>
+      <field name="name"/>
       <field name="correo_docente"/>
-      <field name="estado"/>
       <field name="id_tarjeta"/>
       <field name="carrera_id"/>
     </tree>
@@ -118,17 +254,12 @@
                                 <field name="cedula"/>
                             </group>
                             <group>
-                                <field name="nombre_docente"/>
-                            </group>
-                            <group>
-                                <field name="apellido_docente"/>
+                                <field name="name"/>
                             </group>
                             <group>
                                 <field name="correo_docente"/>
                             </group>
-                            <group>
-                                <field name="estado"/>
-                            </group>
+                           
                             <group>
                                 <field name="id_tarjeta"/>
                             </group>
@@ -155,10 +286,10 @@
   <field name="arch" type="xml">
     <tree>
       
-      <field name="nombre_estudiante"/>
-      <field name="apellido_estudiante"/>
-      <field name="estado"/>
+      <field name="cedula"/>
+      <field name="name"/>
       <field name="id_tarjeta"/>
+      <field name="carrera_id"/>
       <field name="curso_id"/>
     </tree>
   </field>
@@ -172,21 +303,21 @@
                     <sheet>
                             
                             <group>
-                                <field name="nombre_estudiante"/>
+                                <field name="cedula"/>
                             </group>
                             <group>
-                                <field name="apellido_estudiante"/>
+                                <field name="name"/>
                             </group>
-                            <group>
-                                <field name="estado"/>
-                            </group>
+                           
                             <group>
                                 <field name="id_tarjeta"/>
                             </group>
                             <group>
-                                <field name="curso_id"/>
+                                <field name="carrera_id"/>
                             </group>
-                            
+                            <group>
+                                <field name="curso_id" domain="[('carrera_id', '=', carrera_id)]"/>
+                            </group>
                     </sheet>
 
                 </form>
@@ -206,10 +337,12 @@
   <field name="model">controlacceso.lab</field>
   <field name="arch" type="xml">
     <tree>
+      <field name="id"/>
       <field name="codigo_lab"/>
       <field name="name"/>
       <field name="estado_puerta"/>
       <field name="clave_llave"/>
+      <button name="botonconfirm" type="object" string="Abrir puerta" class="oe_highlight" context="{'active_id': name}"/>
     </tree>
   </field>
   </record>
@@ -245,43 +378,149 @@
   <field name="view_mode">tree,form</field>
   </record>
 <!--Fin Accion de ventana Lab-->
-
-<!--Accion de ventana horario
-<record id ="view_tree_horario" model="ir.ui.view">
-  <field name="name">view.tree.horario</field>
-  <field name="model">controlacceso.horario</field>
+<!--Accion de ventana Carrera-->
+  <record id ="view_tree_ca" model="ir.ui.view">
+  <field name="name">view.tree.ca</field>
+  <field name="model">controlacceso.carrera</field>
   <field name="arch" type="xml">
     <tree>
-      
+      <field name="name"/>
     </tree>
   </field>
   </record>
 
-  <record id="view_form_horario" model="ir.ui.view">
-            <field name="name">view.form.horario</field>
-            <field name="model">controlacceso.horario</field>
+  <record id="action_view_ca" model="ir.actions.act_window">
+  <field name="name">Carreras</field>
+  <field name="res_model">controlacceso.carrera</field>
+  <field name="view_mode">tree,form</field>
+  </record>
+<!--Fin Accion de ventana Carrera-->
+
+<!--Boton para puertas-->
+
+<!--FIN BOTON PARA PUERTAS-->
+<!--Accion de ventana Practicas-->
+  <record id ="view_tree_practicas" model="ir.ui.view">
+  <field name="name">view.tree.practicas</field>
+  <field name="model">controlacceso.practica</field>
+  <field name="arch" type="xml">
+    <tree>
+      <field name="name" filter_domain="[('name', '=', 'Uso diario')]"/>
+      <field name="fecha" filter_domain="[('name', '=', 'Uso diario')]"/>
+      <field name="docente_id" filter_domain="[('name', '=', 'Uso diario')]"/>
+      <field name="lab_id" filter_domain="[('name', '=', 'Uso diario')]"/>
+      <field name="curso_id" filter_domain="[('name', '=', 'Uso diario')]"/>
+    </tree>
+  </field>
+  </record>
+<record id="view_form_practicas" model="ir.ui.view">
+            <field name="name">view.form.practicas</field>
+            <field name="model">controlacceso.practica</field>
             <field name="arch" type="xml">
                 <form>
                     <sheet>
-                           
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="fecha"/>
+                            </group>
+                           <!-- <group>
+                                <field name="docente_id"/>
+                            </group>-->
+                            
+                            <group>
+                                <field name="lab_id"/>
+                            </group>
+                            <group>
+                                <field name="curso_id"/>
+                            </group>
+                            
                             
                     </sheet>
 
                 </form>
             </field>
 </record>
- <record id="action_view_horario" model="ir.actions.act_window">
-  <field name="name">Horario</field>
-  <field name="res_model">controlacceso.horario</field>
+  <record id="action_view_practicas" model="ir.actions.act_window">
+  <field name="name">Practicas</field>
+  <field name="res_model">controlacceso.practica</field>
   <field name="view_mode">tree,form</field>
-  </record>-->
-<!--Fin Accion de ventana horario-->
-  <menuitem id="menu_ac"   parent="" action="control_acceso.action_view_ca"/>
-  <menuitem id="menu_curso"   parent="control_acceso.menu_ac" action="control_acceso.action_view_curso"/>
-  <menuitem id="menu_materia"   parent="control_acceso.menu_ac" action="control_acceso.action_view_materia"/>
-  <menuitem id="menu_docente" parent="control_acceso.menu_ac" action="control_acceso.action_view_docente"/>
-  <menuitem id="menu_estudiante" parent="control_acceso.menu_ac" action="control_acceso.action_view_estudiante"/>
-  <menuitem id="menu_lab" parent="control_acceso.menu_ac" action="control_acceso.action_view_lab"/>
+  </record>
+<!--Fin Accion de ventana Practicas-->
+<!--Accion de ventana Practicas-->
+  <record id ="view_tree_registroasistenica" model="ir.ui.view">
+  <field name="name">view.tree.registroasistencia</field>
+  <field name="model">controlacceso.registroasistencia</field>
+  <field name="arch" type="xml">
+    <tree>
+      <field name="name" />
+      <field name="hora_ingreso"/>
+      <field name="fecha_ingreso"/>
+      <field name="temperatura" />
+      <field name="tarjeta"/>
+      <field name="curso_id"/>
+      <field name="materia_id"/>
+      <field name="lab_id" />
+      <field name="ingreso_usuario"
+        decoration-success="ingreso_usuario == 'Si'"
+        decoration-danger="ingreso_usuario == 'No'"
+        widget="badge" />
+    </tree>
+  </field>
+  </record>
+  <record id="action_view_registroasistencia" model="ir.actions.act_window">
+  <field name="name">Registro asistencia</field>
+  <field name="res_model">controlacceso.registroasistencia</field>
+  <field name="view_mode">tree,form</field>
+  </record>
+<!--Fin Accion de ventana Practicas-->
 
+
+ <menuitem id="menu_horario"   name="Control de acceso" action="control_acceso.action_view_horario" />
+  <menuitem id="menu_horario_docente"   name="Control de acceso" action="control_acceso.action_view_horario" groups="control_acceso.res_groups_docentes"/>
+  
+<!--MENU DATOS CARRERA--> 
+  <menuitem id="menu_carrera_principal" name="Datos Carrera" parent="control_acceso.menu_horario"  />
+  <menuitem id="menu_ac" parent="control_acceso.menu_carrera_principal" action="control_acceso.action_view_ca"/>
+  <menuitem id="menu_curso"   parent="control_acceso.menu_carrera_principal" action="control_acceso.action_view_curso"  />
+  <menuitem id="menu_materia"   parent="control_acceso.menu_carrera_principal" action="control_acceso.action_view_materia" />
+ <!--FIN MENU DATOS CARRERA--> 
+  
+   <!--MENU usuarios-->
+<menuitem id="menu_usuarios" name="Usuarios" parent="control_acceso.menu_horario"  />
+<menuitem id="menu_docente" parent="control_acceso.menu_usuarios" action="control_acceso.action_view_docente"  />
+  <menuitem id="menu_estudiante" parent="control_acceso.menu_usuarios" action="control_acceso.action_view_estudiante"  />
+    <!--fin MENU USUARIOS-->
+<!--
+  <menuitem id="menu_docente" parent="control_acceso.menu_horario" action="control_acceso.action_view_docente"  />
+  <menuitem id="menu_estudiante" parent="control_acceso.menu_horario" action="control_acceso.action_view_estudiante"  />
+  -->
+  <!--MENU LABORATORIO--> 
+  <menuitem id="menu_lab_principal" name="Laboratorios" parent="control_acceso.menu_horario" />
+  <menuitem id="menu_lab" parent="control_acceso.menu_lab_principal" action="control_acceso.action_view_lab" />
+  <menuitem id="menu_practicas" parent="control_acceso.menu_lab_principal" action="control_acceso.action_view_practicas" />
+   <menuitem id="menu_horario2"  parent="control_acceso.menu_lab_principal" name="Horario" action="control_acceso.action_view_horario2" />
+   <menuitem id="menu_registroasistencia"  parent="control_acceso.menu_lab_principal" name="Asistencia" action="control_acceso.action_view_registroasistencia" />
+   <!--FIN MENU LABORATORIO-->
+<!--Menu para usuarios docentes-->
+ <menuitem id="menu_practtica_docente"   name="Practicas" parent="control_acceso.menu_horario_docente" action="control_acceso.action_view_practicas" groups="control_acceso.res_groups_docentes"/>
+
+<!--Menu registro asistencia-->
+
+
+<record id="docente_users" model="ir.ui.view">
+          <field name="name">DocenteUser</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form" />
+            <field name="arch" type="xml">
+            <xpath expr="//field[@name='login']" position="after">
+            <label for="tarjeta" string="Nro. de tarjeta"/>
+                <field name="tarjeta" string="Nro. de tarjeta"/>
+                <label for="curso_id" string="Seleccione curso"/>
+                <field name="curso_id" />
+                </xpath>
+            </field>
+</record> 
 </data>
 </odoo>

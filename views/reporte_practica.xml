@@ -1,0 +1,78 @@
+<odoo>
+<data>
+<record id="practica_reporte" model="ir.actions.report">
+<field name="name">Reporte Practicas</field>
+<field name="model">controlacceso.practica</field>
+<field name="report_type">qweb-pdf</field>
+<field name="report_name">control_acceso.report_practica</field>
+<field name="report_file">control_acceso.report_practica</field>
+<field name="binding_model_id" ref="control_acceso.model_controlacceso_practica"></field>
+<field name="binding_type">report</field>
+</record>
+
+<template id="report_practica">
+
+<t t-call="web.html_container">
+
+<t t-call="web.external_layout">
+<center>
+<h1>Reporte de Practicas</h1>
+</center>
+<p class="text-right">Loja, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d de %B del %Y')"/></p>
+<div clas="page">
+ <div style="font-family: 'Open Sans', sans-serif; font-size: 16pt;
+                                color: #000000">
+<div class="form-group row" t-foreach="docs" t-as="d">
+<b lass="text-left">Tema practica: </b> <t t-esc="d.name"/><br/>
+<b lass="text-left">Fecha: </b> <t t-esc="d.fecha"/><br/>
+<b class="text-left">Docente Responsable:</b><t t-esc="d.docente_id.name"/><br/>
+<b class="text-left">laboratorio: </b><t t-esc="d.lab_id.name"/><br/>
+<b class="text-left">Curso: </b><t t-esc="d.curso_id.name"/><br/>
+</div>
+<table class="table table-striped" id="tablets">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Hora ingreso</th>
+                <th>Fecha ingreso</th>
+                <th>Temperatura</th>
+                <th>Nro. tarjeta</th>
+            </tr>
+            </thead>
+                <p t-foreach="docs" t-as="o">
+                <tr  t-foreach="request.env['controlacceso.registroasistencia'].search([('fecha_ingreso', '=', o.fecha),('curso_id', '=', o.curso_id.id) ])" t-as="data">
+                    <th><t t-esc="data.name"/></th>
+                    <th><t t-esc="data.hora_ingreso"/></th>
+                    <th><t t-esc="data.fecha_ingreso"/></th>
+                    <th><t t-esc="data.temperatura"/></th>
+                    <th><t t-esc="data.tarjeta"/></th>
+                </tr>
+                </p>
+            
+    
+            
+    
+        </table>
+</div>
+</div>
+</t>
+</t>
+</template>
+
+<record id="paperformat_frenchcheck" model="report.paperformat">
+    <field name="name">French Bank Check</field>
+    <field name="default" eval="True"/>
+    <field name="format">custom</field>
+    <field name="page_height">80</field>
+    <field name="page_width">175</field>
+    <field name="orientation">Portrait</field>
+    <field name="margin_top">3</field>
+    <field name="margin_bottom">3</field>
+    <field name="margin_left">3</field>
+    <field name="margin_right">3</field>
+    <field name="header_line" eval="False"/>
+    <field name="header_spacing">3</field>
+    <field name="dpi">80</field>
+</record>
+</data>
+</odoo>

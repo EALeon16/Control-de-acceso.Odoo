@@ -1,0 +1,224 @@
+<odoo> 
+ <record id="model_access_res_user_Admin" model="ir.model.access">
+        <field name="name">model.access.res.user</field>
+        <field name="model_id" ref="base.model_res_users"/>
+        <field name="group_id" ref="control_acceso.res_groups_administrador"/><!--Administracion/Ajustes-->
+        <field name="perm_create" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="perm_read" eval="1"/>
+    </record>
+    <record id="model_access_todo" model="ir.model.access">
+        <field name="name">model.access.todo</field>
+        <field name="model_id" ref="control_acceso.model_controlacceso_carrera"/>
+        <field name="group_id" ref="control_acceso.res_groups_administrador"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+    <record id="model_access_docente_carrera" model="ir.model.access">
+        <field name="name">model.access.docente.carrera</field>
+        <field name="model_id" ref="control_acceso.model_controlacceso_carrera"/>
+        <field name="group_id" ref="base.group_system"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+    
+    <record id="model_access_curso" model="ir.model.access">
+        <field name="name">model.access.curso</field>
+        <field name="model_id" ref="control_acceso.model_controlacceso_curso"/>
+        <field name="group_id" ref="base.group_system"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+    <record id="model_access_curso_docente" model="ir.model.access">
+        <field name="name">model.access.curso</field>
+        <field name="model_id" ref="control_acceso.model_controlacceso_curso"/>
+        <field name="group_id" ref="control_acceso.res_groups_docentes"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+    <record id="model_access_registroasistencia" model="ir.model.access">
+        <field name="name">model.access.registroasistencia</field>
+        <field name="model_id" ref="control_acceso.model_controlacceso_registroasistencia"/>
+        <field name="group_id" ref="base.group_system"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+    </record>
+    <record id="model_access_docente" model="ir.model.access">
+            <field name="name">model.access.docente</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_docente"/>
+            <field name="group_id" ref="base.group_system"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+       
+    <record id="model_access_estudiante" model="ir.model.access">
+            <field name="name">model.access.docente</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_estudiante"/>
+            <field name="group_id" ref="base.group_system"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+         <record id="model_access_docente_estudiante" model="ir.model.access">
+            <field name="name">model.access.docente.docente</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_estudiante"/>
+            <field name="group_id" ref="control_acceso.res_groups_docentes"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+    <record id="model_access_lab" model="ir.model.access">
+            <field name="name">model.access.lab</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_lab"/>
+            <field name="group_id" ref="base.group_system"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+    <record id="model_access_materia" model="ir.model.access">
+            <field name="name">model.access.materia</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_materia"/>
+            <field name="group_id" ref="base.group_system"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="model_access_docente_materia" model="ir.model.access">
+            <field name="name">model.access.docente.materia</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_materia"/>
+            <field name="group_id" ref="control_acceso.res_groups_docentes"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+    <record id="model_access_horario" model="ir.model.access">
+            <field name="name">model.access.horario</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_horario"/>
+            <field name="group_id" ref="base.group_system"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="model_access_admin_horario2" model="ir.model.access">
+            <field name="name">model.access.horario2</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_horario2"/>
+            <field name="group_id" ref="base.group_system"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="model_access_administrador_horario2" model="ir.model.access">
+            <field name="name">model.access.horario2</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_horario2"/>
+            <field name="group_id" ref="control_acceso.res_groups_administrador"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="model_access_docente_horario2" model="ir.model.access">
+            <field name="name">model.access.docente.horario2</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_horario2"/>
+            <field name="group_id" ref="control_acceso.res_groups_docentes"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="model_access_alumno_horario2" model="ir.model.access">
+            <field name="name">model.access.alumno.horario2</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_horario2"/>
+            <field name="group_id" ref="control_acceso.res_groups_alumnos"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <record id="model_access_practica" model="ir.model.access">
+            <field name="name">model.access.practica</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_practica"/>
+            <field name="group_id" ref="base.group_system"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+        <!--Permiso para vidualoizar asistencia-->
+         
+        <record id="model_acces_view_practicas" model="ir.rule">
+            <field name="name">model.acces.view.practicas</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_practica" />
+            <field name="groups" eval="[(4, ref('control_acceso.res_groups_docentes'))]" />
+            <field name="perm_read" eval="1" />
+            <field name="perm_write" eval="1" />
+            <field name="perm_create" eval="1" />
+            <field name="perm_unlink" eval="1" />
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        </record>
+        <!--Fin Permiso para vidualoizar asistencia-->
+        <record id="model_access_horario_alumno" model="ir.model.access">
+            <field name="name">model.access.horario.alumno</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_horario"/>
+            <field name="group_id" ref="control_acceso.res_groups_alumnos"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="model_access_horario_docente" model="ir.model.access">
+            <field name="name">model.access.horario.alumno</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_horario"/>
+            <field name="group_id" ref="control_acceso.res_groups_docentes"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="model_access_practicas_docente" model="ir.model.access">
+            <field name="name">model.access.practicas.docente</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_practica"/>
+            <field name="group_id" ref="control_acceso.res_groups_docentes"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+    <record id="model_access_docente_docente" model="ir.model.access">
+            <field name="name">model.access.docente</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_docente"/>
+            <field name="group_id" ref="control_acceso.res_groups_docentes"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+    <record id="model_access_lab_docente" model="ir.model.access">
+            <field name="name">model.access.lab</field>
+            <field name="model_id" ref="control_acceso.model_controlacceso_lab"/>
+            <field name="group_id" ref="control_acceso.res_groups_docentes"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="0"/>
+            <field name="perm_create" eval="0"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+</odoo>
